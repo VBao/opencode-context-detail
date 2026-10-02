@@ -26,5 +26,5 @@ First packaged release. The plugin existed as a single file in a local
 - No-op server entry (`src/index.ts`) so the package resolves on both the server
   and the TUI.
 
-[Unreleased]: https://github.com/OWNER/opencode-context-detail/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/OWNER/opencode-context-detail/releases/tag/v0.1.0
+[Unreleased]: https://github.com/VBao/opencode-context-detail/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/VBao/opencode-context-detail/releases/tag/v0.1.0

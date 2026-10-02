@@ -9,6 +9,8 @@
   },
   "files": [
     "src",
+    "index.ts",
+    "tui.tsx",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
@@ -24,6 +26,14 @@
     "cache"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VBao/opencode-context-detail.git"
+  },
+  "homepage": "https://github.com/VBao/opencode-context-detail#readme",
+  "bugs": {
+    "url": "https://github.com/VBao/opencode-context-detail/issues"
+  },
   "engines": {
     "node": ">=20"
   },

@@ -1,5 +1,8 @@
 # context-detail
 
+[![typecheck](https://github.com/VBao/opencode-context-detail/actions/workflows/typecheck.yml/badge.svg)](https://github.com/VBao/opencode-context-detail/actions/workflows/typecheck.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A colorized context and cost breakdown in the OpenCode TUI sidebar, split by
 token kind.
 
@@ -135,15 +138,24 @@ the package name:
 { "plugins": ["/absolute/path/to/opencode-context-detail", "-opencode.sidebar.context"] }
 ```
 
+> **Local paths and npm packages resolve differently.** When `cli.json` points
+> at a *directory*, OpenCode looks for an entry file at that directory's root
+> (`tui.tsx`, `tui.js`, `index.ts`, `index.js`) — it does not read the package
+> `exports` map. That is why the root `index.ts` and `tui.tsx` exist as
+> re-export stubs over `src/`. Without them a `src/` layout silently resolves
+> nothing, and because `-opencode.sidebar.context` suppresses the built-in line
+> the sidebar just goes blank.
+
 Use `opencode --standalone` to run the TUI against a private server, which
 isolates plugin behaviour from your shared background service.
 
 ## Compatibility
 
-Verified against **OpenCode 2.0.21**. The plugin depends on TUI slot paths
-(`sidebar.content`, `app`) and the `data.session.*` and `data.location.*`
-context APIs, both of which are OpenCode-version-specific. `bun run typecheck`
-against a newer `@opencode/plugin` is the quickest way to check for drift.
+Verified against **OpenCode 2.0.21**, the release this was last checked at
+runtime. The dependency floor is `2.0.19`. CI additionally typechecks `2.0.20`,
+`2.0.22` and `latest`, since the plugin depends on TUI slot paths
+(`sidebar.content`, `app`) and the `data.session.*` / `data.location.*` context
+APIs, both of which are OpenCode-version-specific.
 
 ## License
 

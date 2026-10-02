@@ -23,7 +23,7 @@
 //
 // CONTEXT_DETAIL_DEBUG=1 traces every render to <tmpdir>/context-detail.log.
 //
-// Verified against OpenCode 2.0.21.
+// Verified against OpenCode 2.0.21; dependency floor 2.0.19.
 
 import { For, Show, createEffect, createMemo, createSignal, onCleanup } from "solid-js"
 import { Plugin, usePlugin } from "@opencode/plugin/tui"

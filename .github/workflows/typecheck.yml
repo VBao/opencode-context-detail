@@ -1,0 +1,45 @@
+name: typecheck
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    name: typecheck @opencode/plugin ${{ matrix.plugin }}
+    strategy:
+      # Never let one version's breakage hide the others.
+      fail-fast: false
+      matrix:
+        # The floor is the oldest release this plugin is verified against at
+        # runtime; `latest` catches upstream API drift before users do. Slot
+        # paths and the data.session.* / data.location.* context APIs are
+        # OpenCode-version-specific, so this is the check that matters.
+        plugin:
+          - "2.0.19"
+          - "2.0.20"
+          - "2.0.21"
+          - "2.0.22"
+          - "latest"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install
+        run: bun install
+
+      - name: Pin the matrix version
+        run: bun add -d "@opencode/plugin@${{ matrix.plugin }}" --exact
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Pack
+        # Catches a broken `exports` map or a `files` list that drops source.
+        run: npm pack --dry-run
