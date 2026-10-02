@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "strict": true,
+    // The bulk of src/tui.tsx is deliberately unannotated — it predates any
+    // typecheck and reads more clearly that way. Everything that actually
+    // drifts between OpenCode versions (slot paths, context.data.*, the
+    // keymap and storage shapes) is fully checked, which is the point of
+    // running this. Flip this off once the helpers are annotated.
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@opentui/solid",
+    "types": ["node"]
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+
+# Local scratch: pre-change snapshots taken while editing in place.
+*.bak
+*.bak.*
